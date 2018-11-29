@@ -40,3 +40,5 @@ Thumbs.db
 
 server/node_modules
 client/node_modules
+.editorconfig
+server/config.js
