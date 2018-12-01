@@ -7,16 +7,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule, MatSidenavModule, MatTableModule, MatButtonModule } from '@angular/material';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { RestApiService } from './rest-api.service';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
