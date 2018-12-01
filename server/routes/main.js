@@ -4,7 +4,7 @@ const User = require('../models/user');
 const checkJWT = require('../middlewares/check-jwt');
 
 router.route('/users')
-    .get(checkJWT, (req, res, next) => {
+    .get((req, res, next) => {
         User.find()
             .exec((err, users) => {
                 if (users) {
@@ -16,7 +16,7 @@ router.route('/users')
                 }
             });
     })
-    .post(checkJWT, (req, res, next) => {
+    .post((req, res, next) => {
         let user = new User();
         user.label = req.body.label;
         user.firstName = req.body.firstName;

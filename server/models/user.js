@@ -5,7 +5,7 @@ const UserSchema = new Schema({
     label: { type: String, unique: true },
     firstName: { type: String },
     lastName: { type: String },
-    OIB: { type: Number },
+    oib: { type: Number },
     gender: { type: String },
     entryDate: { type: Date },
     fatherName: { type: String },
