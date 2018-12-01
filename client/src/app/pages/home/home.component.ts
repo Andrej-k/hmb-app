@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { RestApiService } from '../rest-api.service';
+import { DataService } from '../../data.service';
+import { RestApiService } from '../../rest-api.service';
+import { Router } from '@angular/router';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['label', 'name', 'OIB'];
   dataSource: any;
 
-  constructor(private data: DataService, private rest: RestApiService) {}
+  constructor(private data: DataService, private rest: RestApiService, private router: Router) {}
 
   async ngOnInit() {
     try {
@@ -27,8 +29,8 @@ export class HomeComponent implements OnInit {
     this.dataSource = this.users;
   }
 
-  editUser(user) {
-    console.log(user);
+  editUser(user: User) {
+    this.router.navigate([`users/${user._id}`]);
   }
 
 }
