@@ -1,0 +1,16 @@
+:host {
+    width: 100%;
+}
+
+.main-form {
+    padding-top: 50px;
+
+    .form-section {
+        width: 100%;
+
+        .highlight-section {
+            padding: 20px;
+            background: #eee;
+        }
+    }
+}

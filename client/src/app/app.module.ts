@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule, MatSidenavModule, MatTableModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatSidenavModule, MatTableModule, MatButtonModule, MatFormFieldModule,
+  MatOptionModule, MatSelectModule, MatInputModule, MatTabsModule, MatCheckboxModule,
+  MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { HomeComponent } from './pages/home/home.component';
 import { RestApiService } from './rest-api.service';
 import { DataService } from './data.service';
@@ -29,7 +31,15 @@ import { UserDetailsComponent } from './pages/user-details/user-details.componen
     MatToolbarModule,
     MatSidenavModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatInputModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     RestApiService,

@@ -1,3 +1,73 @@
-<p>
-  user-details works!
-</p>
+<div class="content">
+  <mat-tab-group>
+    <mat-tab label="First">
+      <form name="user-details-form" class="main-form" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+        <div class="form-section" fxLayout="column">
+          <mat-form-field>
+            <input matInput name="label" placeholder="Oznaka">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput name="firstName" placeholder="Ime">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput name="lastName" placeholder="Prezime">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput name="oib" placeholder="OIB">
+          </mat-form-field>
+
+          <section class="example-section">
+            <label>Spol: </label>
+            <mat-checkbox matInput name="man">M</mat-checkbox>
+            <mat-checkbox matInput name="woman">Ž</mat-checkbox>
+          </section>
+
+          <mat-form-field>
+            <input matInput name="fatherName" placeholder="Ime oca">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput name="label" placeholder="Oznaka">
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput name placeholder="Textarea"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Select">
+              <mat-option value="option">Option</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-section" fxLayout="column">
+          <div class="highlight-section" fxLayout="column">
+            <h3>Podaci o rođenju</h3>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Datum rođenja">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput name="birthCity" placeholder="Mjesto rođenja">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput name="birthMunicipality" placeholder="Općina rođenja">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput name="birthState" placeholder="Država rođenja">
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="Second"> Content 2 </mat-tab>
+    <mat-tab label="Third"> Content 3 </mat-tab>
+  </mat-tab-group>
+</div>
