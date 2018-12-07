@@ -1,44 +1,52 @@
-<div class="content">
+<div class="title-header" fxLayoutAlign="flex-start center">
+  <mat-icon>keyboard_backspace</mat-icon>
+  <h3>Ime i prezime korisnika</h3>
+</div>
+<mat-card>
+  <mat-toolbar fxLayoutAlign="space-between center">
+    <h1>Korisnički podaci</h1>
+    <div class="buttons-wrapper" fxLayoutAlign="space-between center" fxFlex="180px">
+      <button mat-raised-button class="button" color="primary">Obriši</button>
+      <button mat-raised-button class="button" color="accent" (click)="addUser()">Spremi</button>
+    </div>
+  </mat-toolbar>
   <mat-tab-group>
-    <mat-tab label="First">
-      <form name="user-details-form" class="main-form" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+    <mat-tab label="Osnovni podaci">
+      <form name="userDetailsForm" class="main-form" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
         <div class="form-section" fxLayout="column">
           <mat-form-field>
-            <input matInput name="label" placeholder="Oznaka">
+            <input matInput [(ngModel)]="user.label" name="label" placeholder="Oznaka">
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput name="firstName" placeholder="Ime">
+            <input matInput [(ngModel)]="user.firstName" name="firstName" placeholder="Ime">
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput name="lastName" placeholder="Prezime">
+            <input matInput [(ngModel)]="user.lastName" name="lastName" placeholder="Prezime">
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput name="oib" placeholder="OIB">
+            <input matInput [(ngModel)]="user.oib" name="oib" placeholder="OIB">
           </mat-form-field>
 
-          <section class="example-section">
+          <mat-radio-group [(ngModel)]="user.gender" name="gender" class="radio-section">
             <label>Spol: </label>
-            <mat-checkbox matInput name="man">M</mat-checkbox>
-            <mat-checkbox matInput name="woman">Ž</mat-checkbox>
-          </section>
+            <mat-radio-button value="M" matInput name="gender">M</mat-radio-button>
+            <mat-radio-button value="F" matInput name="gender">Ž</mat-radio-button>
+          </mat-radio-group>
 
           <mat-form-field>
-            <input matInput name="fatherName" placeholder="Ime oca">
+            <input matInput [(ngModel)]="user.fatherName" name="fatherName" placeholder="Ime oca">
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput name="label" placeholder="Oznaka">
+            <input matInput [(ngModel)]="user.placeOfResidence" name="placeOfResidence" placeholder="Adresa prebivališta">
           </mat-form-field>
 
           <mat-form-field>
-            <textarea matInput name placeholder="Textarea"></textarea>
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-select placeholder="Select">
+            <label>Potrebna usluga: </label>
+            <mat-select [(ngModel)]="user.service" name="service">
               <mat-option value="option">Option</mat-option>
             </mat-select>
           </mat-form-field>
@@ -47,27 +55,62 @@
           <div class="highlight-section" fxLayout="column">
             <h3>Podaci o rođenju</h3>
             <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Datum rođenja">
+              <input matInput [(ngModel)]="user.birthDate" name="birthDate" [matDatepicker]="picker" placeholder="Datum rođenja">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field>
-              <input matInput name="birthCity" placeholder="Mjesto rođenja">
+              <input matInput [(ngModel)]="user.birthCity" name="birthCity" placeholder="Mjesto rođenja">
             </mat-form-field>
 
             <mat-form-field>
-              <input matInput name="birthMunicipality" placeholder="Općina rođenja">
+              <input matInput [(ngModel)]="user.birthMunicipality" name="birthMunicipality" placeholder="Općina rođenja">
             </mat-form-field>
 
             <mat-form-field>
-              <input matInput name="birthState" placeholder="Država rođenja">
+              <input matInput [(ngModel)]="user.birthCountry" name="birthCountry" placeholder="Država rođenja">
             </mat-form-field>
           </div>
+          <mat-form-field class="pdTop56">
+            <textarea matInput [(ngModel)]="user.remark" name="remark" placeholder="Napomena"></textarea>
+          </mat-form-field>
         </div>
       </form>
     </mat-tab>
-    <mat-tab label="Second"> Content 2 </mat-tab>
-    <mat-tab label="Third"> Content 3 </mat-tab>
+    <mat-tab label="Bilješka o korisniku">
+      <form name="userNoteForm" class="main-form">
+        <div class="form-section" fxLayout="column">
+          <mat-form-field>
+            <input matInput [matDatepicker]="noteDatepicker" placeholder="Datum unosa">
+            <mat-datepicker-toggle matSuffix [for]="noteDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #noteDatepicker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <label>Djelatnik: </label>
+            <mat-select>
+              <mat-option value="option">Option</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput name placeholder="Opis"></textarea>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="Anamneza">
+      <form name="userAnamnesisForm" class="main-form">
+        <div class="form-section" fxLayout="column">
+          <mat-form-field>
+            <input matInput [matDatepicker]="anamnesisDatepicker" placeholder="Datum unosa">
+            <mat-datepicker-toggle matSuffix [for]="anamnesisDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #anamnesisDatepicker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput name placeholder="Opis"></textarea>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-tab>
   </mat-tab-group>
-</div>
+</mat-card>

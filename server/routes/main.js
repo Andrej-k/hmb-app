@@ -23,12 +23,40 @@ router.route('/users')
         user.lastName = req.body.lastName;
         user.OIB = req.body.OIB;
         user.gender = req.body.gender;
+        user.entryDate = req.body.enrtyDate;
+        user.fatherName = req.body.fatherName;
+        user.birthDate = req.body.birthDate;
+        user.birthCity = req.body.birthCity;
+        user.birthMunicipality = req.body.birthMunicipality;
+        user.birthCountry = req.body.birthCountry;
         user.placeOfResidence = req.body.placeOfResidence;
+        user.service = req.body.service;
+        user.remark = req.body.remark;
+        user.education = req.body.education;
         user.save();
         res.json({
             success: true,
             message: 'Successfully Added the user'
         });
     });
+
+router.get('/users/:id', (req, res, next) => {
+    User.findById({ _id: req.params.id })
+        .exec((err, user) => {
+            if (err) {
+                res.json({
+                    success: false,
+                    message: 'User is not found'
+                });
+            } else {
+                if (user) {
+                    res.json({
+                        success: true,
+                        user: user
+                    });
+                }
+            }
+        });
+});
 
 module.exports = router;

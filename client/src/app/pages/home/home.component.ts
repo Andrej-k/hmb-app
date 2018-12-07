@@ -11,7 +11,7 @@ import { User } from '../../models/user.model';
 })
 export class HomeComponent implements OnInit {
   users: any;
-  displayedColumns: string[] = ['label', 'name', 'OIB'];
+  displayedColumns: string[] = ['label', 'name', 'OIB', 'gender', 'entryDate', 'service'];
   dataSource: any;
 
   constructor(private data: DataService, private rest: RestApiService, private router: Router) {}
@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
     } catch (error) {
       this.data.error(error['message']);
     }
+
+    console.log(this.users);
 
     this.dataSource = this.users;
   }

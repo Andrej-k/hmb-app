@@ -1,16 +1,32 @@
+@import '../../app.component.scss';
+
 :host {
     width: 100%;
 }
 
-.main-form {
-    padding-top: 50px;
+.mat-card {
+    padding: 0;
+    margin: 20px;
 
-    .form-section {
-        width: 100%;
+    .main-form {
+        padding: 50px 20px;
+    
+        .form-section {
+            width: 100%;
 
-        .highlight-section {
-            padding: 20px;
-            background: #eee;
+            .radio-section {
+
+                .mat-radio-button:first-of-type {
+                    margin-right: 10px;
+                }
+            }
+    
+            .highlight-section {
+                padding: 0 20px 20px ;
+                background: #eee;
+                margin-bottom: 20px;
+                border-radius: 4px;
+            }
         }
     }
 }

@@ -9,6 +9,10 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: 'users/new',
+    component: UserDetailsComponent,
+  },
+  {
     path: 'users/:id',
     component: UserDetailsComponent,
   },

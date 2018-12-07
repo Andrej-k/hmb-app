@@ -1,15 +1,59 @@
 export class User {
-    _id:            number;
-    label:          number;
-    firstName:      string;
-    lastName:       boolean;
-    oib:            boolean;
+    _id:                number;
+    label:              string;
+    firstName:          string;
+    lastName:           string;
+    oib:                number;
+    gender:             string;
+    entryDate:          Date;
+    fatherName:         string;
+    birthDate:          Date;
+    birthCity:          string;
+    birthMunicipality:  string;
+    birthCountry:       string;
+    placeOfResidence:   string;
+    service:            string;
+    remark:             string;
+    education:          string;
+    created:            Date;
 
     constructor(data: any = {}) {
-        this._id = data._id;
-        this.label = data.label;
-        this.firstName = data.firstName;
-        this.lastName = data.lastName;
-        this.oib = data.oib;
+        if (data) {
+            this._id = data._id;
+            this.label = data.label;
+            this.firstName = data.firstName;
+            this.lastName = data.lastName;
+            this.oib = data.oib;
+            this.gender = data.gender;
+            this.entryDate = data.entryDate;
+            this.fatherName = data.fatherName;
+            this.birthDate = data.birthDate;
+            this.birthCity = data.birthCity;
+            this.birthMunicipality = data.birthMunicipality;
+            this.birthCountry = data.birthCountry;
+            this.placeOfResidence = data.placeOfResidence;
+            this.service = data.service;
+            this.remark = data.remark;
+            this.education = data.education;
+            this.created = data.created;
+        } else {
+            this._id = null;
+            this.label = '';
+            this.firstName = '';
+            this.lastName = '';
+            this.oib = null;
+            this.gender = '';
+            this.entryDate = null;
+            this.fatherName = '';
+            this.birthDate = null;
+            this.birthCity = '';
+            this.birthMunicipality = '';
+            this.birthCountry = '';
+            this.placeOfResidence = '';
+            this.service = '';
+            this.remark = '';
+            this.education = '';
+            this.created = null;
+        }
     }
 }
