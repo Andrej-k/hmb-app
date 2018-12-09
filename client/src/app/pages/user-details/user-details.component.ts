@@ -14,6 +14,8 @@ export class UserDetailsComponent implements OnInit {
     label: ''
   };
 
+  pageType: string;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private data: DataService,
@@ -24,15 +26,20 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit() {
     console.log(this.user);
     this.activatedRoute.params.subscribe(res => {
-      this.rest
-        .get(`http://localhost:3000/api/users/${res['id']}`)
-        .then(data => {
-          data['success']
-            ? (this.user = data['user'])
-            : this.router.navigate(['/']);
+      if (res['id']) {
+        this.pageType = 'editPage';
+        this.rest
+          .get(`http://localhost:3000/api/users/${res['id']}`)
+          .then(data => {
+            data['success']
+              ? (this.user = data['user'])
+              : this.router.navigate(['/']);
             console.log(data['user']);
-        })
-        .catch(error => this.data.error(error['message']));
+          })
+          .catch(error => this.data.error(error['message']));
+      } else {
+        this.pageType = 'newPage';
+      }
     });
   }
 

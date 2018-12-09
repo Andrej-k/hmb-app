@@ -1,6 +1,7 @@
 <div class="title-header" fxLayoutAlign="flex-start center">
-  <mat-icon>keyboard_backspace</mat-icon>
-  <h3>Ime i prezime korisnika</h3>
+  <mat-icon [routerLink]="'/'" class="back-arrow">keyboard_backspace</mat-icon>
+  <h3 *ngIf="pageType === 'newPage'">Unos novog korisnika</h3>
+  <h3 *ngIf="pageType === 'editPage'">{{ user.firstName }} {{ user.lastName }}</h3>
 </div>
 <mat-card>
   <mat-toolbar fxLayoutAlign="space-between center">
