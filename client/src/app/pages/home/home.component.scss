@@ -6,5 +6,9 @@
 
 .mat-table {
     width: 100%;
+
+    .mat-row {
+        cursor: pointer;
+    }
 }
 

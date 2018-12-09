@@ -1,3 +1,7 @@
+@import '../theme.scss';
+$primary: map-get($my-app-theme, primary);
+
+
 .example-spacer {
     flex: 1 1 auto;
 }
@@ -26,12 +30,21 @@ app-home {
 
 .button {
     padding: 0 22px;
+
+    .mat-icon {
+        position: relative;
+        top: -2px;
+    }
 }
 
 .title-header {
-    background: #764dbe;
+    background: mat-color($primary, 400);
     color: #fff;
     padding: 10px 20px;
+
+    .back-arrow {
+        cursor: pointer;
+    }
 
     h3 {
         font-weight: normal;
@@ -52,7 +65,7 @@ app-home {
 
 .buttons-wrapper {
 
-    .mat-form-field-appearance-legacy .mat-form-field-label {
+    .mat-form-field-label {
         color: #cecece !important;
         font-size: 16px;
     }
