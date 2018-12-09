@@ -1,0 +1,108 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$md-mcgpalette0: (
+    50 : #f7e4e6,
+    100 : #ebbcc0,
+    200 : #de9097,
+    300 : #d0636d,
+    400 : #c6414d,
+    500 : #bc202e,
+    600 : #b61c29,
+    700 : #ad1823,
+    800 : #a5131d,
+    900 : #970b12,
+    A100 : #ffc5c7,
+    A200 : #ff9295,
+    A400 : #ff5f64,
+    A700 : #ff464b,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$md-mcgpalette1: (
+    50 : #e1e7e8,
+    100 : #b5c2c5,
+    200 : #83999f,
+    300 : #517079,
+    400 : #2c525c,
+    500 : #07333f,
+    600 : #062e39,
+    700 : #052731,
+    800 : #042029,
+    900 : #02141b,
+    A100 : #59c8ff,
+    A200 : #26b7ff,
+    A400 : #00a1f2,
+    A700 : #0090d9,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-mcgpalette2: (
+    50 : #fdfdfc,
+    100 : #fafaf8,
+    200 : #f7f6f4,
+    300 : #f4f2f0,
+    400 : #f1f0ec,
+    500 : #efede9,
+    600 : #edebe6,
+    700 : #ebe8e3,
+    800 : #e8e5df,
+    900 : #e4e0d9,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$my-app-primary: mat-palette($md-mcgpalette0);
+$my-app-accent:  mat-palette($md-mcgpalette1);
+$my-app-warn:    mat-palette($md-mcgpalette0);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
