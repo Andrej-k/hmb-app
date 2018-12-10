@@ -24,7 +24,6 @@ export class UserDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.user);
     this.activatedRoute.params.subscribe(res => {
       if (res['id']) {
         this.pageType = 'editPage';
@@ -34,7 +33,6 @@ export class UserDetailsComponent implements OnInit {
             data['success']
               ? (this.user = data['user'])
               : this.router.navigate(['/']);
-            console.log(data['user']);
           })
           .catch(error => this.data.error(error['message']));
       } else {
@@ -43,21 +41,35 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  async addUser() {
-    try {
-      const formData = new FormData();
-      console.log(formData);
-      const data = await this.rest.post(
-        'http://localhost:3000/api/users',
-        formData
-      );
-      data['success']
-        ? this.router.navigate(['/users/'])
-          .then(() => this.data.success(data['message']))
-          .catch(error => this.data.error(error))
-        : this.data.error(data['message']);
-    } catch (error) {
-      this.data.error(error['message']);
+  async saveUser() {
+    if (this.pageType === 'newPage') {
+      try {
+        const data = await this.rest.post(
+          'http://localhost:3000/api/users',
+          this.user
+        );
+        data['success']
+          ? this.router.navigate(['/users/'])
+            .then(() => this.data.success(data['message']))
+            .catch(error => this.data.error(error))
+          : this.data.error(data['message']);
+      } catch (error) {
+        this.data.error(error['message']);
+      }
+    } else if (this.pageType === 'editPage') {
+      try {
+        const data = await this.rest.put(
+          'http://localhost:3000/api/users',
+          this.user
+        );
+        data['success']
+          ? this.router.navigate(['/users/'])
+            .then(() => this.data.success(data['message']))
+            .catch(error => this.data.error(error))
+          : this.data.error(data['message']);
+      } catch (error) {
+        this.data.error(error['message']);
+      }
     }
   }
 

@@ -1,5 +1,6 @@
 export class User {
     _id:                number;
+    id:                 string;
     label:              string;
     firstName:          string;
     lastName:           string;
@@ -20,6 +21,7 @@ export class User {
     constructor(data: any = {}) {
         if (data) {
             this._id = data._id;
+            this.id = data.id;
             this.label = data.label;
             this.firstName = data.firstName;
             this.lastName = data.lastName;
@@ -38,6 +40,7 @@ export class User {
             this.created = data.created;
         } else {
             this._id = null;
+            this.id = '';
             this.label = '';
             this.firstName = '';
             this.lastName = '';

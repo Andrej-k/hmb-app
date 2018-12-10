@@ -26,8 +26,6 @@ export class HomeComponent implements OnInit {
       this.data.error(error['message']);
     }
 
-    console.log(this.users);
-
     this.dataSource = this.users;
   }
 
