@@ -28,7 +28,7 @@ export class UserDetailsComponent implements OnInit {
       if (res['id']) {
         this.pageType = 'editPage';
         this.rest
-          .get(`http://localhost:3000/api/users/${res['id']}`)
+          .get(`http://localhost:3000/api/user/${res['id']}`)
           .then(data => {
             data['success']
               ? (this.user = data['user'])
@@ -45,7 +45,7 @@ export class UserDetailsComponent implements OnInit {
     if (this.pageType === 'newPage') {
       try {
         const data = await this.rest.post(
-          'http://localhost:3000/api/users',
+          'http://localhost:3000/api/user',
           this.user
         );
         data['success']
@@ -59,7 +59,7 @@ export class UserDetailsComponent implements OnInit {
     } else if (this.pageType === 'editPage') {
       try {
         const data = await this.rest.put(
-          'http://localhost:3000/api/users',
+          `http://localhost:3000/api/user/${this.user['_id']}`,
           this.user
         );
         data['success']

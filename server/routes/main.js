@@ -43,48 +43,54 @@ router.route('/users')
             message: 'Successfully Added the user',
             user: user
         });
-    })
-    .put((req, res, next) => {
-        User.findOne({ id: req.body.id }, function (error, user) {
-            console.log(req.body.id);
-            console.log(user);
-            if (error || !user) {
-                res.send({ error: error });
-            } else {
-                user.id = req.body.id;
-                user.label = req.body.label;
-                user.firstName = req.body.firstName;
-                user.lastName = req.body.lastName;
-                user.OIB = req.body.OIB;
-                user.gender = req.body.gender;
-                user.entryDate = req.body.enrtyDate;
-                user.fatherName = req.body.fatherName;
-                user.birthDate = req.body.birthDate;
-                user.birthCity = req.body.birthCity;
-                user.birthMunicipality = req.body.birthMunicipality;
-                user.birthCountry = req.body.birthCountry;
-                user.placeOfResidence = req.body.placeOfResidence;
-                user.service = req.body.service;
-                user.remark = req.body.remark;
-                user.education = req.body.education;
-                // now update it in MongoDB
-                user.update(function (err, user) {
-                    if (err) {
-                        res.json(err);
-                    }
-                    else {
-                        res.json({
-                            success: true,
-                            message: 'Successfully Updated the user',
-                            user: user
-                        });
-                    }
-                });
-            }
-        });
     });
 
-router.get('/users/:id', (req, res, next) => {
+router.put('/user/:id', (req, res, next) => {
+    User.findById(req.body._id, function (error, user) {
+        console.log(req.body._id);
+        console.log(user);
+        if (error || !user) {
+            res.send({ error: error }, { status: 500 });
+            console.log(error);
+        } else {
+            // now update it in MongoDB
+            user.updateOne(
+                { "_id": req.body._id },
+                {
+                    $set: {
+                        label: req.body.label,
+                        firstName: req.body.firstName,
+                        lastName: req.body.lastName,
+                        OIB: req.body.OIB,
+                        gender: req.body.gender,
+                        entryDate: req.body.enrtyDate,
+                        fatherName: req.body.fatherName,
+                        birthDate: req.body.birthDate,
+                        birthCity: req.body.birthCity,
+                        birthMunicipality: req.body.birthMunicipality,
+                        birthCountry: req.body.birthCountry,
+                        placeOfResidence: req.body.placeOfResidence,
+                        service: req.body.service,
+                        remark: req.body.remark,
+                        education: req.body.education
+                    }
+                })
+                .then((obj) => {
+                    res.json({
+                        success: true,
+                        message: 'Successfully Updated the user',
+                        user: obj
+                    });
+                })
+                .catch((err) => {
+                    res.json(err);
+                    console.log(error);
+                });
+        }
+    });
+});
+
+router.get('/user/:id', (req, res, next) => {
     User.findById({ _id: req.params.id })
         .exec((err, user) => {
             if (err) {
