@@ -1,5 +1,7 @@
 @import '../theme.scss';
+$warn: map-get($my-app-theme, warn);
 $primary: map-get($my-app-theme, primary);
+$accent: map-get($my-app-theme, accent);
 
 
 .example-spacer {
@@ -28,6 +30,10 @@ app-home {
     width: 100%;
 }
 
+.title-toolbar {
+    background: mat-color($primary, 700);
+}
+
 .button {
     padding: 0 22px;
 
@@ -38,7 +44,7 @@ app-home {
 }
 
 .title-header {
-    background: mat-color($primary, 400);
+    background: mat-color($warn, 400);
     color: #fff;
     padding: 10px 20px;
 
@@ -63,16 +69,14 @@ app-home {
     padding: 30px 20px;
 }
 
-.buttons-wrapper {
+::ng-deep .mat-form-field-label{
+    color: mat-color($accent, 900) !important;
+}
 
-    .mat-form-field-label {
-        color: #cecece !important;
-        font-size: 16px;
-    }
-    .mat-form-field-underline {
-        background-color: #cecece !important;;
-    }
-    .mat-form-field-ripple {
-        background-color: #cecece !important;
-    }
+::ng-deep .mat-form-field-underline .mat-form-field-ripple{
+    background-color: mat-color($accent, 700) !important;
+}
+      
+::ng-deep .mat-form-field-underline{
+    background-color: mat-color($accent, 700) !important;
 }

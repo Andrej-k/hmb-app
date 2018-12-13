@@ -29,6 +29,10 @@ export class HomeComponent implements OnInit {
     this.dataSource = this.users;
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   editUser(user: User) {
     this.router.navigate([`users/${user._id}`]);
   }

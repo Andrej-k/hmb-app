@@ -101,7 +101,7 @@ $md-mcgpalette2: (
 );
 
 
-$my-app-primary: mat-palette($md-mcgpalette0);
+$my-app-primary: mat-palette($md-mcgpalette2);
 $my-app-accent:  mat-palette($md-mcgpalette1);
 $my-app-warn:    mat-palette($md-mcgpalette0);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);

@@ -3,13 +3,13 @@
   <h3>Korisnici</h3>
 </div>
 <div class="content">
-  <mat-toolbar fxLayoutAlign="space-between center">
+  <mat-toolbar class="title-toolbar" fxLayoutAlign="space-between center">
     <h4>Lista korisnika</h4>
     <div class="buttons-wrapper" fxLayoutAlign="space-between center" fxFlex="400px">
       <mat-form-field>
-        <input matInput placeholder="Pretraži">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraži">
       </mat-form-field>
-      <button mat-raised-button class="button" color="primary" [routerLink]="['/users/new']">
+      <button mat-raised-button class="button" color="accent" [routerLink]="['/users/new']">
         <mat-icon>add</mat-icon>
         Dodaj novog korisnika
       </button>
