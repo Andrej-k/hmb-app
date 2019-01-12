@@ -6,7 +6,7 @@ var uniqid = require('uniqid');
 const checkJWT = require('../middlewares/check-jwt');
 
 router.route('/users')
-    .get((req, res, next) => {
+    .get(checkJWT, (req, res, next) => {
         User.find()
             .exec((err, users) => {
                 if (err) res.json({
@@ -21,7 +21,7 @@ router.route('/users')
                 }
             });
     })
-    .post((req, res, next) => {
+    .post(checkJWT, (req, res, next) => {
         let user = new User();
         console.log(uniqid());
         user.id = uniqid();
@@ -48,7 +48,7 @@ router.route('/users')
         });
     });
 
-router.put('/user/:id', (req, res, next) => {
+router.put('/user/:id', checkJWT, (req, res, next) => {
     console.log(req.body.id);
     User.findOneAndUpdate({ id: req.body.id },
         {
@@ -82,7 +82,7 @@ router.put('/user/:id', (req, res, next) => {
         });
 });
 
-router.get('/user/:id', (req, res, next) => {
+router.get('/user/:id', checkJWT, (req, res, next) => {
     User.findById({ _id: req.params.id })
         .exec((err, user) => {
             if (err) {

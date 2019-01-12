@@ -30,45 +30,6 @@ app-home {
     width: 100%;
 }
 
-.title-toolbar {
-    background: mat-color($primary, 700);
-}
-
-.button {
-    padding: 0 22px;
-
-    .mat-icon {
-        position: relative;
-        top: -2px;
-    }
-}
-
-.title-header {
-    background: mat-color($warn, 400);
-    color: #fff;
-    padding: 10px 20px;
-
-    .back-arrow {
-        cursor: pointer;
-    }
-
-    h3 {
-        font-weight: normal;
-    }
-
-    .mat-icon {
-        margin-right: 15px;
-    }
-}
-
-.pdTop56 {
-    padding-top: 56px;
-}
-
-.content {
-    padding: 30px 20px;
-}
-
 ::ng-deep .mat-form-field-label{
     color: mat-color($accent, 900) !important;
 }

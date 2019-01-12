@@ -9,8 +9,7 @@ export class DataService {
   message = '';
   messageType = 'danger';
 
-  user: any;
-  cartItems = 0;
+  employee: any;
 
   constructor(private router: Router, private rest: RestApiService) {
     this.router.events.subscribe(event => {
@@ -41,7 +40,7 @@ export class DataService {
         const data = await this.rest.get(
           'http://localhost:3030/api/accounts/profile',
         );
-        this.user = data['user'];
+        this.employee = data['employee'];
       }
     } catch (e) {
       this.error(e);

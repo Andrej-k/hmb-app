@@ -1,0 +1,15 @@
+<div class="content login">
+  <mat-card>
+    <h3 class="text-center">Login</h3>
+    <mat-divider></mat-divider>
+    <form name="loginForm" fxLayout="column" fxLayoutAlign="center center">
+      <mat-form-field>
+        <input matInput name="email" [(ngModel)]="email" placeholder="Email">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="password" [(ngModel)]="password" placeholder="Password">
+      </mat-form-field>
+      <button color="accent" type="submit" class="button" mat-raised-button (click)="login()">Login</button>
+    </form>
+  </mat-card>
+</div>

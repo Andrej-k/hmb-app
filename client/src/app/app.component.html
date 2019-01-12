@@ -8,11 +8,13 @@
 
     <!-- The following menu items will be hidden on both SM and XS screen sizes -->
 
-    <a class="nav-item" href="#" mat-button>Menu Item 1</a>
+    <a *ngIf="!token" class="nav-item" [routerLink]="'/login'" mat-button>Prijava</a>
 
-    <a class="nav-item" href="#" mat-button>Menu Item 2</a>
-
-    <a class="nav-item" href="#" mat-button>Menu Item 3</a>
+    <button *ngIf="token" mat-button [matMenuTriggerFor]="menu">Ime, Prezime</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="goToProfile()">Profil</button>
+      <button mat-menu-item (click)="logout()">Odjava</button>
+    </mat-menu>
 
   </div>
 

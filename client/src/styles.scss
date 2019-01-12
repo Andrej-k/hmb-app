@@ -1,12 +1,66 @@
 @import './theme.scss';
+$warn: map-get($my-app-theme, warn);
 $primary: map-get($my-app-theme, primary);
+$accent: map-get($my-app-theme, accent);
 
 html, body { 
     height: 100%; 
 
 }
+
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background: mat-color($primary, 300);
+}
+
+.title-toolbar {
+    background: mat-color($primary, 700);
+}
+
+.button {
+    padding: 0 22px !important;
+
+    .mat-icon {
+        position: relative;
+        top: -2px;
+    }
+}
+
+.title-header {
+    background: mat-color($warn, 400);
+    color: #fff;
+    padding: 10px 20px;
+
+    .back-arrow {
+        cursor: pointer;
+    }
+
+    h3 {
+        font-weight: normal;
+    }
+
+    .mat-icon {
+        margin-right: 15px;
+    }
+}
+
+.pdTop56 {
+    padding-top: 56px;
+}
+
+.content {
+    padding: 30px 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
 }
