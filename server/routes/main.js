@@ -9,6 +9,9 @@ router.route('/users')
     .get((req, res, next) => {
         User.find()
             .exec((err, users) => {
+                if (err) res.json({
+                    error: err
+                });
                 if (users) {
                     res.json({
                         success: true,
@@ -46,48 +49,37 @@ router.route('/users')
     });
 
 router.put('/user/:id', (req, res, next) => {
-    User.findById(req.body._id, function (error, user) {
-        console.log(req.body._id);
-        console.log(user);
-        if (error || !user) {
-            res.send({ error: error }, { status: 500 });
-            console.log(error);
-        } else {
-            // now update it in MongoDB
-            user.updateOne(
-                { "_id": req.body._id },
-                {
-                    $set: {
-                        label: req.body.label,
-                        firstName: req.body.firstName,
-                        lastName: req.body.lastName,
-                        OIB: req.body.OIB,
-                        gender: req.body.gender,
-                        entryDate: req.body.enrtyDate,
-                        fatherName: req.body.fatherName,
-                        birthDate: req.body.birthDate,
-                        birthCity: req.body.birthCity,
-                        birthMunicipality: req.body.birthMunicipality,
-                        birthCountry: req.body.birthCountry,
-                        placeOfResidence: req.body.placeOfResidence,
-                        service: req.body.service,
-                        remark: req.body.remark,
-                        education: req.body.education
-                    }
-                })
-                .then((obj) => {
-                    res.json({
-                        success: true,
-                        message: 'Successfully Updated the user',
-                        user: obj
-                    });
-                })
-                .catch((err) => {
-                    res.json(err);
-                    console.log(error);
-                });
-        }
-    });
+    console.log(req.body.id);
+    User.findOneAndUpdate({ id: req.body.id },
+        {
+            label: req.body.label,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            OIB: req.body.OIB,
+            gender: req.body.gender,
+            entryDate: req.body.enrtyDate,
+            fatherName: req.body.fatherName,
+            birthDate: req.body.birthDate,
+            birthCity: req.body.birthCity,
+            birthMunicipality: req.body.birthMunicipality,
+            birthCountry: req.body.birthCountry,
+            placeOfResidence: req.body.placeOfResidence,
+            service: req.body.service,
+            remark: req.body.remark,
+            education: req.body.education
+
+        },
+        { new: true },
+        function (err, doc) {
+            res.json({
+                success: true,
+                message: 'Successfully Updated the user',
+                user: doc
+            })
+            console.log(res);
+            if (err) throw err;
+            console.log("1 document updated");
+        });
 });
 
 router.get('/user/:id', (req, res, next) => {
