@@ -3,16 +3,18 @@ import { DataService } from '../../data.service';
 import { RestApiService } from '../../rest-api.service';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
   users: any;
-  displayedColumns: string[] = ['label', 'name', 'OIB', 'gender', 'entryDate', 'service'];
-  dataSource: any;
+  displayedColumns: string[] = ['label', 'name', 'oib', 'gender', 'entryDate', 'service'];
+  dataSource = new MatTableDataSource(this.users);
 
   constructor(private data: DataService, private rest: RestApiService, private router: Router) {}
 
@@ -27,6 +29,10 @@ export class HomeComponent implements OnInit {
     }
 
     this.dataSource = this.users;
+  }
+
+  get token() {
+    return localStorage.getItem('token');
   }
 
   applyFilter(filterValue: string) {
