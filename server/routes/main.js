@@ -28,9 +28,8 @@ router.route('/users')
         user.label = req.body.label;
         user.firstName = req.body.firstName;
         user.lastName = req.body.lastName;
-        user.OIB = req.body.OIB;
+        user.oib = req.body.oib;
         user.gender = req.body.gender;
-        user.entryDate = req.body.enrtyDate;
         user.fatherName = req.body.fatherName;
         user.birthDate = req.body.birthDate;
         user.birthCity = req.body.birthCity;
@@ -40,6 +39,11 @@ router.route('/users')
         user.service = req.body.service;
         user.remark = req.body.remark;
         user.education = req.body.education;
+        user.noteDate = req.body.noteDate;
+        user.noteDescription = req.body.noteDescription;
+        user.noteEmployee = req.body.noteEmployee;
+        user.anamnesisDate = req.body.anamnesisDate;
+        user.anamnesisDescription = req.body.anamnesisDescription;
         user.save();
         res.json({
             success: true,
@@ -55,9 +59,8 @@ router.put('/user/:id', checkJWT, (req, res, next) => {
             label: req.body.label,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            OIB: req.body.OIB,
+            oib: req.body.oib,
             gender: req.body.gender,
-            entryDate: req.body.enrtyDate,
             fatherName: req.body.fatherName,
             birthDate: req.body.birthDate,
             birthCity: req.body.birthCity,
@@ -66,8 +69,12 @@ router.put('/user/:id', checkJWT, (req, res, next) => {
             placeOfResidence: req.body.placeOfResidence,
             service: req.body.service,
             remark: req.body.remark,
-            education: req.body.education
-
+            education: req.body.education,
+            noteDate: req.body.noteDate,
+            noteDescription: req.body.noteDescription,
+            noteEmployee: req.body.noteEmployee,
+            anamnesisDate: req.body.anamnesisDate,
+            anamnesisDescription: req.body.anamnesisDescription
         },
         { new: true },
         function (err, doc) {
