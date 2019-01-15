@@ -3,6 +3,7 @@ import { DataService } from '../../data.service';
 import { RestApiService } from '../../rest-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user.model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-user-details',
@@ -20,7 +21,8 @@ export class UserDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private data: DataService,
     private rest: RestApiService,
-    private router: Router
+    private router: Router,
+    private matSnackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -50,7 +52,13 @@ export class UserDetailsComponent implements OnInit {
         );
         data['success']
           ? this.router.navigate(['/users/'])
-            .then(() => this.data.success(data['message']))
+            .then(() => {
+              this.data.success(data['message']);
+              this.matSnackBar.open('Korisnik je spremljen.', 'OK', {
+                verticalPosition: 'top',
+                duration: 2000
+              });
+            })
             .catch(error => this.data.error(error))
           : this.data.error(data['message']);
       } catch (error) {
@@ -64,7 +72,13 @@ export class UserDetailsComponent implements OnInit {
         );
         data['success']
           ? this.router.navigate(['/users/'])
-            .then(() => this.data.success(data['message']))
+            .then(() => {
+              this.data.success(data['message']);
+              this.matSnackBar.open('Korisnik je ažuriran.', 'OK', {
+                verticalPosition: 'top',
+                duration: 2000
+              });
+            })
             .catch(error => this.data.error(error))
           : this.data.error(data['message']);
       } catch (error) {
