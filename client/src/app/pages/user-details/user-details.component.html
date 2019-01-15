@@ -46,8 +46,7 @@
           </mat-form-field>
 
           <mat-form-field>
-            <label>Potrebna usluga: </label>
-            <mat-select [(ngModel)]="user.service" name="service">
+            <mat-select [(ngModel)]="user.service" name="service" placeholder="Potrebna usluga">
               <mat-option value="option">Option</mat-option>
             </mat-select>
           </mat-form-field>
@@ -73,7 +72,12 @@
               <input matInput [(ngModel)]="user.birthCountry" name="birthCountry" placeholder="Država rođenja">
             </mat-form-field>
           </div>
-          <mat-form-field class="pdTop56">
+          <mat-form-field>
+            <mat-select [(ngModel)]="user.education" name="education" placeholder="Obrazovanje">
+              <mat-option value="option">Option</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="napomena">
             <textarea matInput [(ngModel)]="user.remark" name="remark" placeholder="Napomena"></textarea>
           </mat-form-field>
         </div>
@@ -83,18 +87,17 @@
       <form name="userNoteForm" class="main-form">
         <div class="form-section" fxLayout="column">
           <mat-form-field>
-            <input matInput [matDatepicker]="noteDatepicker" placeholder="Datum unosa">
+            <input matInput [(ngModel)]="user.noteDate" name="noteDate" [matDatepicker]="noteDatepicker" placeholder="Datum unosa">
             <mat-datepicker-toggle matSuffix [for]="noteDatepicker"></mat-datepicker-toggle>
             <mat-datepicker #noteDatepicker></mat-datepicker>
           </mat-form-field>
           <mat-form-field>
-            <label>Djelatnik: </label>
-            <mat-select>
+            <mat-select [(ngModel)]="user.noteEmployee" name="noteEmployee" placeholder="Djelatnik">
               <mat-option value="option">Option</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <textarea matInput name placeholder="Opis"></textarea>
+            <textarea matInput [(ngModel)]="user.noteDescription" name="noteDescription" placeholder="Opis"></textarea>
           </mat-form-field>
         </div>
       </form>
@@ -103,12 +106,12 @@
       <form name="userAnamnesisForm" class="main-form">
         <div class="form-section" fxLayout="column">
           <mat-form-field>
-            <input matInput [matDatepicker]="anamnesisDatepicker" placeholder="Datum unosa">
+            <input matInput [(ngModel)]="user.anamnesisDate" name="anamnesisDate" [matDatepicker]="anamnesisDatepicker" placeholder="Datum unosa">
             <mat-datepicker-toggle matSuffix [for]="anamnesisDatepicker"></mat-datepicker-toggle>
             <mat-datepicker #anamnesisDatepicker></mat-datepicker>
           </mat-form-field>
           <mat-form-field>
-            <textarea matInput name placeholder="Opis"></textarea>
+            <textarea matInput [(ngModel)]="user.anamnesisDescription" name="anamnesisDescription" placeholder="Opis"></textarea>
           </mat-form-field>
         </div>
       </form>
