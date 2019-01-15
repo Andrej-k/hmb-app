@@ -23,7 +23,6 @@ router.route('/users')
     })
     .post(checkJWT, (req, res, next) => {
         let user = new User();
-        console.log(uniqid());
         user.id = uniqid();
         user.label = req.body.label;
         user.firstName = req.body.firstName;
@@ -53,7 +52,6 @@ router.route('/users')
     });
 
 router.put('/user/:id', checkJWT, (req, res, next) => {
-    console.log(req.body.id);
     User.findOneAndUpdate({ id: req.body.id },
         {
             label: req.body.label,
@@ -83,7 +81,6 @@ router.put('/user/:id', checkJWT, (req, res, next) => {
                 message: 'Successfully Updated the user',
                 user: doc
             })
-            console.log(res);
             if (err) throw err;
             console.log("1 document updated");
         });
