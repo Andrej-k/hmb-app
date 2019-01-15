@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from './data.service';
 import { User } from './models/user.model';
@@ -13,7 +13,6 @@ export class AppComponent {
 
   constructor(private router: Router, private data: DataService) {
     this.data.getProfile();
-    console.log(data);
   }
 
   get token() {
@@ -23,6 +22,6 @@ export class AppComponent {
   logout() {
     this.data.employee = {};
     localStorage.clear();
-    this.router.navigate(['']);
+    this.router.navigate(['/login']);
   }
 }

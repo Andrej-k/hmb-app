@@ -10,9 +10,9 @@
 
     <a *ngIf="!token" class="nav-item" [routerLink]="'/login'" mat-button>Prijava</a>
 
-    <button *ngIf="token" mat-button [matMenuTriggerFor]="menu">Ime, Prezime</button>
+    <button *ngIf="token && data.employee" mat-button [matMenuTriggerFor]="menu">{{ data.employee.name }}</button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="goToProfile()">Profil</button>
+      <button mat-menu-item [routerLink]="'/profile'">Profil</button>
       <button mat-menu-item (click)="logout()">Odjava</button>
     </mat-menu>
 

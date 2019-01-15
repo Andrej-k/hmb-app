@@ -45,8 +45,12 @@ body {
     }
 }
 
-.pdTop56 {
-    padding-top: 56px;
+.mat-form-field {
+    padding: 5px 0;
+}
+
+.mat-radio-group {
+    padding: 5px 0 15px;
 }
 
 .content {
@@ -63,4 +67,8 @@ body {
 
 .text-right {
     text-align: right;
+}
+
+.mat-snack-bar-container {
+    margin: 0 !important;
 }

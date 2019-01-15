@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule, MatSidenavModule, MatTableModule, MatButtonModule, MatFormFieldModule,
+import {
+  MatToolbarModule, MatSidenavModule, MatTableModule, MatButtonModule, MatFormFieldModule,
   MatOptionModule, MatSelectModule, MatInputModule, MatTabsModule, MatCheckboxModule,
-  MatDatepickerModule, MatNativeDateModule, MatCardModule, MatIconModule, MatRadioModule, MatDividerModule, 
-  MatMenuModule } from '@angular/material';
+  MatDatepickerModule, MatNativeDateModule, MatCardModule, MatIconModule, MatRadioModule, MatDividerModule,
+  MatMenuModule, MatSnackBarModule
+} from '@angular/material';
 import { HomeComponent } from './pages/home/home.component';
 import { RestApiService } from './rest-api.service';
 import { DataService } from './data.service';
@@ -17,6 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeHR from '@angular/common/locales/hr';
+registerLocaleData(localeHR, 'hr');
 
 
 
@@ -50,11 +56,13 @@ import { LoginComponent } from './pages/login/login.component';
     FormsModule,
     MatRadioModule,
     MatDividerModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
   ],
   providers: [
     RestApiService,
-    DataService
+    DataService,
+    { provide: LOCALE_ID, useValue: 'hr' }
   ],
   bootstrap: [AppComponent]
 })
