@@ -8,7 +8,6 @@ const UserSchema = new Schema({
     lastName: { type: String },
     oib: { type: Number },
     gender: { type: String },
-    entryDate: { type: Date },
     fatherName: { type: String },
     birthDate: { type: Date },
     birthCity: { type: String },
@@ -18,7 +17,12 @@ const UserSchema = new Schema({
     service: { type: String },
     remark: { type: String },
     education: { type: String },
-    created: { type: Date, default: Date.now }
+    created: { type: Date, default: Date.now },
+    noteDate: { type: Date },
+    noteEmployee: { type: String },
+    noteDescription: { type: String },
+    anamnesisDate: { type: Date },
+    anamnesisDescription: { type: String }
 });
 
 module.exports = mongoose.model('User', UserSchema);
