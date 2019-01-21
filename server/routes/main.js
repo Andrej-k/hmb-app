@@ -105,4 +105,27 @@ router.get('/user/:id', checkJWT, (req, res, next) => {
         });
 });
 
+router.delete('/user/:id', checkJWT, (req, res, next) => {
+    console.log("Qaaaaaaaa");
+    User.deleteOne({ _id: req.params.id })
+        .exec((err, doc) => {
+            if (err) {
+                console.log("Error");
+                res.json({
+                    success: false,
+                    message: 'User is not found'
+                });
+            } else {
+                if (doc) {
+                    console.log("USer");
+                    res.json({
+                        success: true,
+                        message: 'Successfully Deleted the user',
+                        user: doc
+                    });
+                }
+            }
+        });
+});
+
 module.exports = router;
