@@ -11,11 +11,11 @@ html, body {
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background: mat-color($primary, 300);
+    background: mat-color($primary, 100);
 }
 
 .title-toolbar {
-    background: mat-color($primary, 700);
+    background: mat-color($primary, 700) !important;
 }
 
 .button {
@@ -71,4 +71,10 @@ body {
 
 .mat-snack-bar-container {
     margin: 0 !important;
+}
+
+.buttons-wrapper {
+    .button:first-child {
+        margin-right: 15px;
+    }
 }

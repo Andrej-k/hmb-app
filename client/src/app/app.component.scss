@@ -11,6 +11,17 @@ $accent: map-get($my-app-theme, accent);
 .navigation {
     padding: 0 20px;
 
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+
+        .logo {
+            max-width: 115px;
+            width: 100%;
+            min-width: 100px;
+        }
+    }
+
     .nav-items {
         height: 100%;
         display: flex;

@@ -1,4 +1,8 @@
-@import '../../app.component.scss';
+@import '../../../styles.scss';
+@import '../../../theme.scss';
+$warn: map-get($my-app-theme, warn);
+$primary: map-get($my-app-theme, primary);
+$accent: map-get($my-app-theme, accent);
 
 :host {
     width: 100%;
@@ -23,9 +27,13 @@
     
             .highlight-section {
                 padding: 0 20px 20px ;
-                background: #eee;
+                background: mat-color($primary, 200);
                 margin-bottom: 20px;
                 border-radius: 4px;
+            }
+
+            .napomena {
+                margin-top: -1px;
             }
         }
     }
