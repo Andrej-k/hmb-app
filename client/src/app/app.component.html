@@ -1,6 +1,8 @@
-<mat-toolbar color="warn" class="navigation">
+<mat-toolbar color="primary" class="navigation">
 
-  <span>HMB</span>
+  <a routerLink="/" class="navbar-brand">
+    <img src="../../assets/hmb_logo.svg" alt="logo" class="logo">
+  </a>
 
   <span class="example-spacer"></span>
 
@@ -10,10 +12,14 @@
 
     <a *ngIf="!token" class="nav-item" [routerLink]="'/login'" mat-button>Prijava</a>
 
-    <button *ngIf="token && data.employee" mat-button [matMenuTriggerFor]="menu">{{ data.employee.name }}</button>
+    <button *ngIf="token && data.employee" mat-button [matMenuTriggerFor]="menu">{{ data.employee.name }}
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="'/profile'">Profil</button>
-      <button mat-menu-item (click)="logout()">Odjava</button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Odjava
+      </button>
     </mat-menu>
 
   </div>
