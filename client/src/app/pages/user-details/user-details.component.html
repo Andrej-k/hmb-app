@@ -6,12 +6,12 @@
 <mat-card>
   <mat-toolbar class="title-toolbar" fxLayoutAlign="space-between center">
     <h1>Korisnički podaci</h1>
-    <div class="buttons-wrapper" fxLayoutAlign="space-between center" fxFlex="180px">
-      <button mat-raised-button class="button" color="warn">Obriši</button>
+    <div class="buttons-wrapper" fxLayoutAlign="flex-end center">
+      <button mat-raised-button *ngIf="pageType === 'editPage'" class="button" color="warn">Obriši</button>
       <button mat-raised-button class="button" color="accent" (click)="saveUser()">Spremi</button>
     </div>
   </mat-toolbar>
-  <mat-tab-group>
+  <mat-tab-group color="warn">
     <mat-tab label="Osnovni podaci">
       <form name="userDetailsForm" class="main-form" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
         <div class="form-section" fxLayout="column">
