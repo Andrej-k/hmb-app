@@ -4,6 +4,9 @@ import { RestApiService } from '../../rest-api.service';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
 import { MatTableDataSource, MatSnackBar } from '@angular/material';
+import { FormControl } from '@angular/forms';
+import { HmbUtils } from '../../utils';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -15,13 +18,16 @@ export class HomeComponent implements OnInit {
   users: any;
   displayedColumns: string[] = ['label', 'name', 'oib', 'gender', 'entryDate', 'service', 'actions'];
   dataSource = new MatTableDataSource(this.users);
+  searchInput: FormControl;
 
   constructor(
     private data: DataService,
     private rest: RestApiService,
     private router: Router,
     private matSnackBar: MatSnackBar
-  ) { }
+  ) {
+    this.searchInput = new FormControl('');
+   }
 
   async ngOnInit() {
     try {
@@ -33,15 +39,20 @@ export class HomeComponent implements OnInit {
       this.data.error(error['message']);
     }
 
-    this.dataSource = this.users;
+    this.searchInput.valueChanges
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged()
+      )
+      .subscribe(searchTerm => {
+        return HmbUtils.filterArrayByString(this.users, searchTerm).map(user => user.id);
+      });
+
+      this.dataSource = this.users;
   }
 
   get token() {
     return localStorage.getItem('token');
-  }
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   editUser(user: User) {

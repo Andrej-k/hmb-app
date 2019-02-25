@@ -17,7 +17,7 @@ import { RestApiService } from './rest-api.service';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
@@ -57,7 +57,8 @@ registerLocaleData(localeHR, 'hr');
     MatRadioModule,
     MatDividerModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ReactiveFormsModule
   ],
   providers: [
     RestApiService,

@@ -30,7 +30,7 @@ $accent: map-get($my-app-theme, accent);
             display: flex;
             align-items: center;
             padding: 0 10px;
-            color: #fff;
+            color: mat-color($warn, 500);
             text-decoration: none;
         }
     }

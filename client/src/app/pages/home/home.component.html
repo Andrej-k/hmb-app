@@ -9,7 +9,7 @@
       <h4>Lista korisnika</h4>
       <div class="buttons-wrapper" fxLayoutAlign="space-between center" fxFlex="400px">
         <mat-form-field>
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraži">
+          <input matInput [formControl]="searchInput" placeholder="Pretraži">
         </mat-form-field>
         <button mat-raised-button class="button" color="accent" [routerLink]="['/users/new']">
           <mat-icon>add</mat-icon>
